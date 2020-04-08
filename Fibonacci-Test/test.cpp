@@ -19,3 +19,23 @@ TEST(NonnegativeNumbers, SmallNumbers) {
         EXPECT_EQ(fibonacci(n), numbers[n]);
 
 }
+
+TEST(LargeNumbers, Num30) {
+    EXPECT_EQ(fibonacci(30), 832040);
+}
+
+TEST(LargeNumbers, Num34) {
+    EXPECT_EQ(fibonacci(34), 5702887);
+}
+
+TEST(LargeNumbers, Num38) {
+    EXPECT_EQ(fibonacci(38), 39088169);
+}
+
+TEST(LargeNumbers, Num42) {
+    EXPECT_EQ(fibonacci(42), 267914296);
+}
+
+TEST(LargeNumbers, Num46) {
+    EXPECT_EQ(fibonacci(46), 1836311903);
+}
