@@ -1,11 +1,13 @@
 #include "pch.h"
 #include "fibonacci.h"
 
+#include <cstdint>
+
 
 TEST(NegativeNumbers, Test) {
 
     for (auto number : { -4, -1, -5, -122, -10000, -123 })
-        EXPECT_EQ(fibonacci(number), 0);
+        EXPECT_EQ(fibonacci<int>(number), 0);
 
 }
 
@@ -16,26 +18,30 @@ TEST(NonnegativeNumbers, SmallNumbers) {
 
     constexpr auto countNumbers = std::size(numbers);
     for (std::size_t n = 0; n < countNumbers; ++n)
-        EXPECT_EQ(fibonacci(n), numbers[n]);
+        EXPECT_EQ(fibonacci<int>(n), numbers[n]);
 
 }
 
 TEST(LargeNumbers, Num30) {
-    EXPECT_EQ(fibonacci(30), 832040);
+    EXPECT_EQ(fibonacci<int>(30), 832040);
 }
 
 TEST(LargeNumbers, Num34) {
-    EXPECT_EQ(fibonacci(34), 5702887);
+    EXPECT_EQ(fibonacci<int>(34), 5702887);
 }
 
 TEST(LargeNumbers, Num38) {
-    EXPECT_EQ(fibonacci(38), 39088169);
+    EXPECT_EQ(fibonacci<int>(38), 39088169);
 }
 
 TEST(LargeNumbers, Num42) {
-    EXPECT_EQ(fibonacci(42), 267914296);
+    EXPECT_EQ(fibonacci<int>(42), 267914296);
 }
 
 TEST(LargeNumbers, Num46) {
-    EXPECT_EQ(fibonacci(46), 1836311903);
+    EXPECT_EQ(fibonacci<int>(46), 1836311903);
+}
+
+TEST(LargeNumbers, Num47) {
+    EXPECT_EQ(fibonacci<std::uint64_t>(47), static_cast<std::uint64_t>(2971215073));
 }
