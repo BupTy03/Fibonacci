@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <array>
+#include <experimental/generator>
 
 
 template<typename T>
@@ -58,4 +59,24 @@ R fibonacci(N n)
 	if (n <= 0) return R{ 0 };
 
 	return power(std::array<R, 4>{1, 1, 1, 0}, N{ n - 1 }, multiply_matrix_2x2<R>())[0];
+}
+
+template<typename R, typename N>
+std::experimental::generator<R> fibonacci_coroutine(N n)
+{
+	if (n <= 0) co_yield R{ 0 };
+
+	const auto mtx = power(std::array<R, 4>{1, 1, 1, 0}, N{ n - 1 }, multiply_matrix_2x2<R>());
+	co_yield mtx[0];
+
+	R prev = mtx[1];
+	R next = mtx[0];
+	while (true)
+	{
+		R sum = prev + next;
+		prev = next;
+		next = sum;
+
+		co_yield next;
+	}
 }

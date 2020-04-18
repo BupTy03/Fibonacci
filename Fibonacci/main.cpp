@@ -1,8 +1,10 @@
 #include "fibonacci.h"
 
 #include <boost/multiprecision/cpp_int.hpp>
+
 #include <iostream>
-#include <memory>
+#include <algorithm>
+#include <iterator>
 
 
 using cpp_int = boost::multiprecision::cpp_int;
@@ -13,7 +15,7 @@ int main()
 {
 	std::system("chcp 1251");
 
-	print_fibonacci(1000000);
+	std::copy_n(fibonacci_coroutine<cpp_int>(50).begin(), 10, std::ostream_iterator<cpp_int>(std::cout, ", "));
 	return 0;
 }
 
