@@ -25,8 +25,8 @@ auto make_fibonacci_list(std::size_t num)
 template<typename ForwardIt>
 void print_list(ForwardIt first, ForwardIt last)
 {
-	std::copy(first, last,
-		std::ostream_iterator<typename std::iterator_traits<ForwardIt>::value_type>(std::cout, ", "));
+	using value_type = typename std::iterator_traits<ForwardIt>::value_type;
+	std::copy(first, last, std::ostream_iterator<value_type>(std::cout, ", "));
 }
 
 template<typename Container>
