@@ -41,6 +41,8 @@ int main()
 {
 	std::system("chcp 1251");
 
+	print_fibonacci(20);
+
 	const auto fibonacci_numbers = make_fibonacci_list<int>(20);
 	print_list(fibonacci_numbers);
 	return 0;
@@ -49,7 +51,8 @@ int main()
 
 void print_fibonacci(int number)
 {
-	std::cout << "Число Фибоначчи от " << number << ": " << fibonacci<cpp_int>(number) << std::endl;
+	assert(number >= 0);
+	std::cout << "Fibonacci for " << number << ": " << fibonacci<cpp_int>(number) << std::endl;
 }
 
 void print_fibonacci(int from, int count)
