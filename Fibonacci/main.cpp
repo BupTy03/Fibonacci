@@ -7,6 +7,7 @@
 #include <iterator>
 #include <vector>
 #include <numeric>
+#include <cassert>
 
 
 using cpp_int = boost::multiprecision::cpp_int;
@@ -53,6 +54,11 @@ void print_fibonacci(int number)
 
 void print_fibonacci(int from, int count)
 {
+	assert(from >= 0);
+	assert(count >= 0);
+
+	if (count == 0) return;
+
 	std::copy_n(fibonacci_coroutine<cpp_int>(from).begin(), count, 
 		std::ostream_iterator<cpp_int>(std::cout, ", "));
 }
