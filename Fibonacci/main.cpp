@@ -39,8 +39,6 @@ void print_list(const Container& cont)
 
 int main()
 {
-	std::system("chcp 1251");
-
 	print_fibonacci(20);
 
 	const auto fibonacci_numbers = make_fibonacci_list<int>(20);
